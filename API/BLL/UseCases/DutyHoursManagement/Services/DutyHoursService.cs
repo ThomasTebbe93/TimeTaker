@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Transactions;
 using API.BLL.Base;
 using API.BLL.Extensions;
 using API.BLL.Helper;
@@ -34,7 +35,7 @@ namespace API.BLL.UseCases.DutyHoursManagement.Services
             this.enricher = enricher;
         }
 
-        public DutyHours FindByIdent( DutyHoursIdent ident)
+        public DutyHours FindByIdent(DutyHoursIdent ident)
         {
             var res = dutyHoursDao.FindByIdent(ident);
             return enricher.Enrich(res);
@@ -53,7 +54,7 @@ namespace API.BLL.UseCases.DutyHoursManagement.Services
                         ValidationFailures = validationFailures,
                         StatusCode = StatusCode.ValidationError
                     };
-                
+
                 var oldDutyHours = dutyHoursDao.FindByIdents(
                     dutyHours.Where(x => x.Ident != null)
                         .Select(dutyHour => new DutyHoursIdent((Guid)dutyHour.Ident))
@@ -72,7 +73,9 @@ namespace API.BLL.UseCases.DutyHoursManagement.Services
                         SignOutBooking = new DutyHoursBooking(existing.SignOutBooking)
                         {
                             BookingTime = dutyHour.End
-                        }
+                        },
+                        ServiceLogTypeId = dutyHour.ServiceLogTypeId ?? existing.ServiceLogTypeId,
+                        ServiceLogDescriptionId = dutyHour.ServiceLogDescriptionId ?? existing.ServiceLogDescriptionId
                     };
                 }).ToList();
 
@@ -81,7 +84,7 @@ namespace API.BLL.UseCases.DutyHoursManagement.Services
                     dutyHour.SignInBooking,
                     dutyHour.SignOutBooking
                 }).ToList();
-                
+
                 if (!context.User.Role.Rights.Select(x => x.Key).ToHashSet()
                         .Contains(Rights.DutyHoursEditBooking) && toUpdateDutyHours.Count > 0)
                     return new RequestResult()
@@ -93,8 +96,12 @@ namespace API.BLL.UseCases.DutyHoursManagement.Services
                         },
                         StatusCode = StatusCode.PermissionFailure
                     };
+                using var transactionScope = new TransactionScope();
 
+                dutyHoursDao.UpdateMany(toUpdateDutyHours);
                 dutyHoursBookingDao.UpdateMany(toUpdateBookings);
+
+                transactionScope.Complete();
             }
             catch (Exception e)
             {

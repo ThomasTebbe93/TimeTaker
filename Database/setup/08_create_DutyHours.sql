@@ -2,7 +2,9 @@ CREATE TABLE public.dutyhours
 (
     ident uuid NOT NULL,
     signInBookingIdent uuid NOT NULL,
-    signOutBookingIdent uuid NOT NULL
+    signOutBookingIdent uuid NOT NULL,
+    servicelogtypeid bigint,
+    servicelogdescriptionid bigint
 );
 
 CREATE TABLE public.dutyhoursbookings

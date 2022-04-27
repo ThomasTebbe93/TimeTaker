@@ -64,3 +64,9 @@ sudo pip3 install mfrc522
 #### Install lib for http-requests
 
 sudo pip3 install requests
+
+### Edit config.ini
+
+### Run application
+
+python ./main.py

@@ -21,6 +21,13 @@ namespace API.BLL.UseCases.DrkServerServiceLogTypes.Controller
             this.typeService = typeService;
         }
         
+        [HttpPost("autocomplete")]
+        [ActionName("JSONMethod")]
+        public IActionResult AutoComplete(AutoCompleteOptions autoCompleteOptions)
+        {
+            var res = typeService.Autocomplete(autoCompleteOptions.SearchValue);
+            return Ok(res);
+        }
         
         [HttpPost("findBySearchValue")]
         public IActionResult FindBySearchValue(ServiceLogTypeSearchOptions searchOptions)

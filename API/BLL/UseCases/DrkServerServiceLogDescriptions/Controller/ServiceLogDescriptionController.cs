@@ -24,6 +24,13 @@ namespace API.BLL.UseCases.DrkServerServiceLogDescriptions.Controller
             this.descriptionService = descriptionService;
         }
         
+        [HttpPost("autocomplete")]
+        [ActionName("JSONMethod")]
+        public IActionResult AutoComplete(AutoCompleteOptions autoCompleteOptions)
+        {
+            var res = descriptionService.Autocomplete(autoCompleteOptions.SearchValue);
+            return Ok(res);
+        }
         
         [HttpPost("findBySearchValue")]
         public IActionResult FindBySearchValue(ServiceLogDescriptionSearchOptions searchOptions)

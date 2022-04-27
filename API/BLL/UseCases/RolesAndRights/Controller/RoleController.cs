@@ -64,8 +64,8 @@ namespace API.BLL.UseCases.RolesAndRights.Controller
         [ActionName("JSONMethod")]
         public IActionResult AutoComplete(AutoCompleteOptions autoCompleteOptions)
         {
-            var stocks = roleService.Autocomplete(autoCompleteOptions.SearchValue);
-            return Ok(stocks);
+            var res = roleService.Autocomplete(autoCompleteOptions.SearchValue);
+            return Ok(res);
         }
 
         [HttpPost("findBySearchValue")]

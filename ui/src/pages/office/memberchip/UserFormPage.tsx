@@ -31,7 +31,7 @@ const useStyles = makeStyles((theme: Theme) =>
         slideInHeader: {
             padding: 10,
             borderBottomStyle: "solid",
-            borderBottomColor: "#333",
+            borderBottomColor: theme.palette.text.primary,
             borderBottomWidth: 1,
             display: "flex",
             justifyContent: "space-between",

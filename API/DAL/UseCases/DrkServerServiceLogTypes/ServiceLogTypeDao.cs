@@ -25,7 +25,30 @@ namespace API.DAL.UseCases.DrkServerServiceLogTypes
             ConnectionString = appSettings.Value.DbConnection;
             Transformer = new ServiceLogTypeTransformer();
         }
-        
+
+        public List<ServiceLogType> FindByIds(HashSet<int> ids)
+        {
+            if (ids.Count < 1) return new List<ServiceLogType>();
+
+            DapperExtensions.DapperExtensions.SqlDialect = new PostgreSqlDialect();
+            using var con = new NpgsqlConnection(ConnectionString);
+            con.Open();
+
+            var res = con.Query<DbServiceLogType>(
+                $@"
+                        SELECT *
+                        FROM {TableName}
+                        WHERE Id = ANY(@ids)
+                    ",
+                new
+                {
+                    ids = ids.ToList(),
+                }
+            );
+
+            return res.Select(x => Transformer.ToEntity(x)).ToList();
+        }
+
         public bool DeleteAll()
         {
             DapperExtensions.DapperExtensions.SqlDialect = new PostgreSqlDialect();
@@ -59,8 +82,30 @@ namespace API.DAL.UseCases.DrkServerServiceLogTypes
             con.Open();
             con.Insert<DbServiceLogType>(entries);
         }
-        
-        
+
+        public List<ServiceLogType> GetAllForAutocomplete(string searchValue)
+        {
+            using var con = new NpgsqlConnection(ConnectionString);
+            con.Open();
+
+            var res = con.Query<DbServiceLogType>(
+                $@"
+                    SELECT *
+                    FROM {TableName}
+                    WHERE Name ILIKE @searchValue 
+                       OR Shortcut ILIKE @searchValue     
+                    ORDER BY name 
+                    ",
+                new
+                {
+                    searchValue = $"%{searchValue}%",
+                }
+            );
+
+            return res.Select(x => Transformer.ToEntity(x)).ToList();
+        }
+
+
         public DataTableSearchResult<ServiceLogType> FindBySearchValue(ServiceLogTypeSearchOptions searchOptions)
         {
             var query = $@"WITH TempResult AS (SELECT * FROM {TableName} ";

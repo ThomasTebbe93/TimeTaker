@@ -13,7 +13,9 @@ namespace API.BLL.UseCases.DutyHoursManagement.Transformer
             {
                 Ident = entity.Ident.Ident<DutyHoursIdent>(),
                 SignInBookingIdent = entity.SignInBookingIdent.Ident<DutyHoursBookingIdent>(),
-                SignOutBookingIdent = entity.SignOutBookingIdent.Ident<DutyHoursBookingIdent>()
+                SignOutBookingIdent = entity.SignOutBookingIdent.Ident<DutyHoursBookingIdent>(),
+                ServiceLogTypeId = entity.ServiceLogTypeId,
+                ServiceLogDescriptionId = entity.ServiceLogDescriptionId
             };
         }
 
@@ -24,6 +26,8 @@ namespace API.BLL.UseCases.DutyHoursManagement.Transformer
                 Ident = entity.Ident.Ident,
                 SignInBookingIdent = entity.SignInBookingIdent.Ident,
                 SignOutBookingIdent = entity.SignOutBookingIdent.Ident,
+                ServiceLogDescriptionId = entity.ServiceLogDescriptionId,
+                ServiceLogTypeId = entity.ServiceLogTypeId,
             };
         }
     }

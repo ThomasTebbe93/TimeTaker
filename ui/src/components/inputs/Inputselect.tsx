@@ -46,6 +46,7 @@ interface Props {
     value: any;
     loade: (inputValue: string) => Promise<any[]>;
     disabled: boolean;
+    checkSelceted?: (option: any, value: any) => boolean;
     error?: boolean;
     helperText?: React.ReactNode;
 }
@@ -55,6 +56,7 @@ export default function InputSelect({
     value,
     loade,
     disabled,
+    checkSelceted,
     error,
     helperText,
 }: Props) {
@@ -105,11 +107,14 @@ export default function InputSelect({
         }
     };
 
+    const checkIsSelceted = !!checkSelceted
+        ? checkSelceted
+        : (option: any, value: any) =>
+              option?.ident?.ident === value?.ident?.ident;
+
     return (
         <Autocomplete
-            getOptionSelected={(option: any, value: any) =>
-                option?.ident?.ident === value?.ident?.ident
-            }
+            getOptionSelected={checkIsSelceted}
             onFocus={onFocus}
             disabled={disabled}
             loading={isLoading}

@@ -9,6 +9,9 @@ namespace API.BLL.UseCases.DutyHoursManagement.Entities
         public bool? Deleted { get; set; }
         public DateTimeOffset Start { get; set; }
         public DateTimeOffset End { get; set; }
+        public int? ServiceLogTypeId { get; set; }
+        public int? ServiceLogDescriptionId { get; set; }
+
 
         public DutyHoursRestEntity()
         {
@@ -21,6 +24,8 @@ namespace API.BLL.UseCases.DutyHoursManagement.Entities
             Deleted = entity.Deleted;
             Start = entity.Start;
             End = entity.End;
+            ServiceLogTypeId = entity.ServiceLogTypeId;
+            ServiceLogDescriptionId = entity.ServiceLogDescriptionId;
         }
     }
 }

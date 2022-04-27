@@ -30,6 +30,8 @@ import LoadingBars from "../../../components/loadingAnimations/LoadingBars";
 import FormSection from "../../../components/layout/formpage/FormSection";
 import FormInput from "../../../components/layout/formpage/FormInput";
 import { differenceInSeconds } from "date-fns/esm";
+import ServiceLogTypeInputSelect from "../../../components/inputs/ServiceLogTypeInputSelect";
+import ServiceLogDescriptionInputSelect from "../../../components/inputs/ServiceLogDescriptionInputSelect";
 
 const useStyles = makeStyles((theme: Theme) =>
     createStyles({
@@ -64,6 +66,11 @@ const useStyles = makeStyles((theme: Theme) =>
         dutyHourSelectIcon: {
             height: 39,
             margin: "-10px 10px -10px 0px",
+        },
+        input: {
+            color: theme.palette.getContrastText(
+                theme.palette.background.default
+            ),
         },
     })
 );
@@ -130,6 +137,9 @@ export default function DutyHoursFormPage(props: Props) {
                     ident: dutyHour?.ident?.ident,
                     start: dutyHour?.signInBooking.bookingTime,
                     end: dutyHour?.signOutBooking.bookingTime,
+                    ServiceLogTypeId: dutyHour?.serviceLogType?.id,
+                    ServiceLogDescriptionId:
+                        dutyHour?.serviceLogDescription?.id,
                 },
             ])
             .then((res) => {
@@ -159,6 +169,19 @@ export default function DutyHoursFormPage(props: Props) {
         const newDutyHour = {
             ...dutyHour,
             signOutBooking: { ...dutyHour?.signOutBooking, bookingTime: date },
+        } as DutyHour;
+        setDutyHour(newDutyHour);
+    };
+
+    const onChangeServiceLogType = (value: unknown) => {
+        const newDutyHour = { ...dutyHour, serviceLogType: value } as DutyHour;
+        setDutyHour(newDutyHour);
+    };
+
+    const onChangeServiceLogDescription = (value: unknown) => {
+        const newDutyHour = {
+            ...dutyHour,
+            serviceLogDescription: value,
         } as DutyHour;
         setDutyHour(newDutyHour);
     };
@@ -296,6 +319,20 @@ export default function DutyHoursFormPage(props: Props) {
                                           ).toFixed(2)} ${t("common.hours")}`
                                         : ""}
                                 </div>
+                            </FormInput>
+                            <div style={{ height: 20, width: "100%" }}></div>
+                            <FormInput label={t("common.type")}>
+                                <ServiceLogTypeInputSelect
+                                    onChange={onChangeServiceLogType}
+                                    value={dutyHour?.serviceLogType}
+                                />
+                            </FormInput>
+                            <div style={{ height: 20, width: "100%" }}></div>
+                            <FormInput label={t("common.description")}>
+                                <ServiceLogDescriptionInputSelect
+                                    onChange={onChangeServiceLogDescription}
+                                    value={dutyHour?.serviceLogDescription}
+                                />
                             </FormInput>
                         </FormSection>
                     </div>

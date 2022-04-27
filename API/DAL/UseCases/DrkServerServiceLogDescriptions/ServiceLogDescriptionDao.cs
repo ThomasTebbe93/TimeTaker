@@ -26,6 +26,51 @@ namespace API.DAL.UseCases.DrkServerServiceLogDescriptions
             Transformer = new ServiceLogDescriptionTransformer();
         }
         
+        public List<ServiceLogDescription> FindByIds(HashSet<int> ids)
+        {
+            if (ids.Count < 1) return new List<ServiceLogDescription>();
+
+            DapperExtensions.DapperExtensions.SqlDialect = new PostgreSqlDialect();
+            using var con = new NpgsqlConnection(ConnectionString);
+            con.Open();
+
+            var res = con.Query<DbServiceLogDescription>(
+                $@"
+                        SELECT *
+                        FROM {TableName}
+                        WHERE Id = ANY(@ids)
+                    ",
+                new
+                {
+                    ids = ids.ToList(),
+                }
+            );
+
+            return res.Select(x => Transformer.ToEntity(x)).ToList();
+        }
+        
+        public List<ServiceLogDescription> GetAllForAutocomplete(string searchValue)
+        {
+            using var con = new NpgsqlConnection(ConnectionString);
+            con.Open();
+
+            var res = con.Query<DbServiceLogDescription>(
+                $@"
+                    SELECT *
+                    FROM {TableName}
+                    WHERE Name ILIKE @searchValue 
+                       OR Shortcut ILIKE @searchValue     
+                    ORDER BY name 
+                    ",
+                new
+                {
+                    searchValue = $"%{searchValue}%",
+                }
+            );
+
+            return res.Select(x => Transformer.ToEntity(x)).ToList();
+        }
+        
         public bool DeleteAll()
         {
             DapperExtensions.DapperExtensions.SqlDialect = new PostgreSqlDialect();

@@ -1,3 +1,5 @@
+import { ServiceLogDescription } from "./serviceLogDescription";
+import { ServiceLogType } from "./serviceLogType";
 import { User } from "./user";
 
 export type DutyHour = {
@@ -7,6 +9,8 @@ export type DutyHour = {
     signOutBookingIdent: { ident: string };
     signInBooking: DutyHoursBooking;
     signOutBooking: DutyHoursBooking;
+    serviceLogType?: ServiceLogType;
+    serviceLogDescription?: ServiceLogDescription;
 };
 
 export type DutyHoursBooking = {

@@ -9,5 +9,7 @@ namespace API.BLL.UseCases.DrkServerServiceLogDescriptions.Daos
         bool DeleteAll();
         void CreateMany(List<ServiceLogDescription> entities);
         DataTableSearchResult<ServiceLogDescription> FindBySearchValue(ServiceLogDescriptionSearchOptions searchOptions);
+        List<ServiceLogDescription> GetAllForAutocomplete(string searchValue);
+        List<ServiceLogDescription> FindByIds(HashSet<int> ids);
     }
 }

@@ -200,6 +200,8 @@ const resources = {
             "action.setPassword": "Passwort setzen",
             "action.doImport": "importieren",
             "action.close": "schließen",
+            "action.updateUserDutyHours":
+                "Dienststunden von {{userFirstname}} {{userLastname}} bearbeiten",
 
             "error.invalidPasswortResetHash":
                 "Dieser Link ist veraltet und Steht nicht merht zum ändern eine vergessenen Passworts bereit",

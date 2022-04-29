@@ -18,9 +18,9 @@ some jumpercables
 ### Case
 
 Als Case können viele der gängigen Cases für das entsprechende Display verwendet werden.
-Ich damit alles (Sendor, Display und Pi) schön in einem passenden Case enthalten ist habe ich selbst einst erstellt und gedruckt.
+Damit Alles (Sendor, Display und Pi) schön in einem passenden Case enthalten ist habe ich selbst eines erstellt und gedruckt.
 Die Dateien dazu sind unter "./TimeTaker/Terminal/case" zu finden.
-Die dort enthaltenen STL lassen sich mit UltimakerCura 3.1 und höher gut druken. Wenn kein eigener 3D-Drucker vorhanden ist gibt es im Internet verschiedene Abieter für den Druck. Ggf. muss die Ausspahruing für den Stromanschluss etwas nachgearbeiet werden.
+Die dort enthaltenen STL lassen sich mit UltimakerCura 3.1 und höher gut drucken. Wenn kein eigener 3D-Drucker vorhanden ist gibt es im Internet verschiedene Anbieter für den Druck. Ggf. muss die Ausspahrung für den Stromanschluss etwas nachgearbeitet werden.
 
 Modell
 ![Modell](https://github.com/ThomasTebbe93/TimeTaker/blob/main/Terminal/case/case.PNG?raw=true)
@@ -81,7 +81,7 @@ reboot pi
 sudo apt update
 ```
 
-#### Insatll python
+#### Install python
 
 ```
 sudo apt install python3-dev python3-pip
@@ -105,7 +105,7 @@ sudo apt-get install python3-tk
 sudo pip3 install spidev
 ```
 
-#### Insatll lib for RFID
+#### Install lib for RFID
 
 ```
 sudo pip3 install mfrc522
@@ -119,7 +119,7 @@ sudo pip3 install requests
 
 ### Edit config.ini
 
-Hinterlegen Sie die Benutzerdaten (Login und Passwort) fürs Termianl
+Hinterlegen Sie die Benutzerdaten (Login und Passwort) fürs Terminal
 
 ### Run application
 
@@ -129,7 +129,7 @@ python ./main.py
 
 ## Create Role For Terminal-User
 
-Damit das terminal buchen kann muss der hinterlegte Benutzer eine Rolle mit folgenden rechten haben:
+Damit das Terminal buchen kann muss der hinterlegte Benutzer eine Rolle mit folgenden Rechten haben:
 
 - Dienststunden anzeige
   - erstellen

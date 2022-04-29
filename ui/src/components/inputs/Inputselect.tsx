@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-    makeStyles,
-    Theme,
-    createStyles,
-    TextField,
-    useTheme,
-} from "@material-ui/core";
+import { makeStyles, Theme, createStyles, TextField } from "@material-ui/core";
 import Autocomplete, {
     AutocompleteChangeDetails,
     AutocompleteChangeReason,
@@ -60,7 +54,6 @@ export default function InputSelect({
     error,
     helperText,
 }: Props) {
-    const theme = useTheme();
     const classes = useStyles();
     const [entities, setEntities] = useState<any[] | null>(null);
     const [inputValue, setInputValue] = useState<string>("");

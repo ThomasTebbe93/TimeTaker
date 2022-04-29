@@ -1,6 +1,7 @@
 # time-terminal
 
-![alt text](http://url/to/img.png)
+Prototyp
+![Prototyp](https://github.com/ThomasTebbe93/TimeTaker/blob/main/Terminal/case/case.PNG?raw=true)
 
 ## hardware
 

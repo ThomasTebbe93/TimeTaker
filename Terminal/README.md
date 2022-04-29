@@ -1,7 +1,7 @@
 # time-terminal
 
 Prototyp
-![Prototyp](https://github.com/ThomasTebbe93/TimeTaker/blob/main/Terminal/case/case.PNG?raw=true)
+![Prototyp](https://github.com/ThomasTebbe93/TimeTaker/blob/main/Terminal/case/timeTaker_prototype.jpg?raw=true)
 
 ## hardware
 
@@ -21,6 +21,12 @@ Als Case können viele der gängigen Cases für das entsprechende Display verwen
 Ich damit alles (Sendor, Display und Pi) schön in einem passenden Case enthalten ist habe ich selbst einst erstellt und gedruckt.
 Die Dateien dazu sind unter "./TimeTaker/Terminal/case" zu finden.
 Die dort enthaltenen STL lassen sich mit UltimakerCura 3.1 und höher gut druken. Wenn kein eigener 3D-Drucker vorhanden ist gibt es im Internet verschiedene Abieter für den Druck. Ggf. muss die Ausspahruing für den Stromanschluss etwas nachgearbeiet werden.
+
+Modell
+![Modell](https://github.com/ThomasTebbe93/TimeTaker/blob/main/Terminal/case/case.PNG?raw=true)
+
+Pi im Case
+![Pi im Case](https://github.com/ThomasTebbe93/TimeTaker/blob/main/Terminal/case/timeTaker_caseWithPi.jpg?raw=true)
 
 ## Connect to raspberry pi
 

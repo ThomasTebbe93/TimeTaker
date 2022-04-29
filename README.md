@@ -3,7 +3,7 @@
 Eine [Vorführversion](https://time-taker.blaulichtbande.de/) des TimeTalers findet Ihr unter
 [https://time-taker.blaulichtbande.de/](https://time-taker.blaulichtbande.de/)
 
--   Benutzename: tb@baluclichtbande.de
+-   Benutzename: tb@blaulichtbande.de
 -   Passwort: 12345678
 
 Das Projekt TimeTaker besteht aus drei Komponenten
@@ -16,9 +16,9 @@ Das Projekt TimeTaker besteht aus drei Komponenten
         -   Benutzer anzulegen
         -   Rollen festzulegen
         -   Daten zwischen DRK-Server und TimeTake auzutauschen
-        -   Efasste Buchungen zu bearbeiten und frei zu geben
+        -   Erfasste Buchungen zu bearbeiten und frei zu geben
 -   Terminal
-    -   Ist die vor Ort installierte Einhaeit, die zum Erfassen von Buchungen verwendet wird.
+    -   Ist die Vor-Ort installierte Einhaeit, die zum Erfassen von Buchungen verwendet wird.
     -   Hier scannen die Benutzer ihren RFID-Chip
     -   [Dokumentation](https://github.com/ThomasTebbe93/TimeTaker/blob/main/Terminal/README.md)
 
@@ -28,7 +28,7 @@ Das Projekt TimeTaker besteht aus drei Komponenten
 
 #### 1.1.1 .Net 6
 
-Um das Repo auf deiner Maschine bauen und laufen zu können, benötigen Sie die SDK von .Net 6.
+Um das Repo auf Ihrer Maschine bauen und laufen zu können, benötigen Sie die SDK von .Net 6.
 
 -   https://dotnet.microsoft.com/en-us/download/dotnet/6.0
 
@@ -56,12 +56,12 @@ pgAdmin ist ein PostgreSQL Tool, welches sowohl für das Aufsetzen der Datenbank
 
 #### 1.2.1 Datanbank vorbereiten
 
--   Installieren SIE PostgreSQL.
+-   Installieren Sie PostgreSQL.
 -   Erstellen Sie einen neuen Benutzer.
 -   Erstellen Sie eine neue Datenbank für dieses Projekt.
 -   Erstellen Sie die Tabellen:
     -   Führen Sie dafür alle Scripte im Ordner "./timeTaker/Database/setup" in Reihenfolge ihrer Nummerierung aus.
-    -   Ist dies geschaft müssen ggf. noch Updates durchgeführt werden. Dazu öffnen Sie die jeweiligen VersionsOrdner unter "./timeTaker/Database" in Reihenfolge ihrer Nummerierung und führen die darin enthaltenen Scripte ebenfalls in Reihenfolge ihrer Nummerierung aus.
+    -   Ist dies erledigt, müssen ggf. noch Updates durchgeführt werden. Dazu öffnen Sie die jeweiligen Versions-Ordner unter "./timeTaker/Database" und führen die    darin enthaltenen Scripte ebenfalls in Reihenfolge ihrer Nummerierung aus.
 -   Passen Sie nun die "DbConnection" in "./timeTaker/API/appsettings.json" an.
 
 #### 1.2.2 Run API
@@ -106,7 +106,7 @@ Zum Bauen der Weboberfläche müssen Pakete über npm installiert werden. Dafür
 
 #### 2.1.3 FTP-Client
 
-Damit Sie die gebauten Dateien auf den Server verschieben Können ist es sinnvoll einen FTP-Client wie FileZilla zu installieren.
+Damit Sie die gebauten Dateien auf den Server verschieben können ist es sinnvoll einen FTP-Client wie FileZilla zu installieren.
 
 -   https://filezilla-project.org/download.php?type=client
 
@@ -162,12 +162,12 @@ pgAdmin ist ein PostgreSQL-Tool, welches sowohl für das Aufsetzen der Datenbank
 
 #### 2.3.1 PostgreSQL
 
--   Insallieren Sie PostgreSQL.
+-   Installieren Sie PostgreSQL.
     ```
     sudo apt update
     sudo apt install postgresql postgresql-contrib
     ```
--   Legen Sie eien Benutzer für die Anwendung an.
+-   Legen Sie einen Benutzer für die Anwendung an.
     ```
     sudo -u postgres createuser --interactive
     ```
@@ -201,7 +201,7 @@ Konfigrieren Sie nginx
     ```
     vim default
     ```
--   Bearbeiten Sie eienen forhandenen Server oder fügen Sie einen neuen hinzu.
+-   Bearbeiten Sie einen vorhandenen Server oder fügen Sie einen Neuen hinzu.
 
     -   In diesem Beispiel ist der Server über "<DOMAIN_OR_SUBDOMAIN>" erreichbar, die API läuft auf Ihrem Server unter "http://localhost:<API_PORT>" und der Server für die Weboberfläche ist unter "http://localhost:<UI_SERVER_PORT>" erreichbar.
     -   Die Ports sind in der "./timeTaker/API/appsettings.json" und der "./timeTaker/uiServer/uiServer.js" definiert.
@@ -235,7 +235,7 @@ Konfigrieren Sie nginx
     }
     ```
 
--   Im Anschluss ppeichern Sie die geänderte Konfiguration und starten ngingx neu, damit die Änderungen übernommen werden.
+-   Im Anschluss speichern Sie die geänderte Konfiguration und starten ngingx neu, damit die Änderungen übernommen werden.
     ```
     sudo nginx -s reload
     sudo service nginx start
@@ -274,12 +274,12 @@ sudo apt install screen
 
 #### 2.3.5 Datenbank einrichten
 
-Nun ist es an der zeit mit Hilfe von pgAdmin sich auf den PostgreSQL-Datenbak-Server zu verbinden.
+Nun ist es an der Zeit mit Hilfe von pgAdmin sich auf den PostgreSQL-Datenbak-Server zu verbinden.
 
 -   ggf. muss dazu noch die eigene IP zugelassen werden.
     Die eigene IP finden Sie einfach über die Webseite https://www.wieistmeineip.de/ heraus.
     Haben Sie diese, so muss diese in die Konfiguration des PostgreSQL-Servers hinterlegt werden.
-    Gehen Sie dazu in den Ordner "../etc/postgresql/10/main/" und passen Sie die Datei "pg_hba.conf" mit eienm Editor an.
+    Gehen Sie dazu in den Ordner "../etc/postgresql/10/main/" und passen Sie die Datei "pg_hba.conf" mit einem Editor an.
 
     ```
     cd ../etc/postgresql/10/main/
@@ -359,7 +359,7 @@ Sind Sie im richtigen screen, so können Sie über
 -   ctrl + c oder
 -   ctrl + a, dann k und wenn gefragt wird, ob Sie die Session wirklich beenden wollen y
 
-den Servie beenden
+den Service beenden
 
 #### 2.5.2 UI-Server
 
@@ -369,9 +369,9 @@ Führen Sie im Terminal Ihres Servers folgenden Befehl aus:
 sudo screen -r timeTakerUi
 ```
 
-Sind Sie im richtigen screen, so können Sie über
+Sind Sie im richtigen Screen, so können Sie über
 
 -   ctrl + c oder
 -   ctrl + a, dann k und wenn gefragt wird, ob Sie die Session wirklich beenden wollen y
 
-den Servie beenden
+den Service beenden

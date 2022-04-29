@@ -1,5 +1,11 @@
 # TimeTaker
 
+Eine [Vorführversion](https://time-taker.blaulichtbande.de/) des TimeTalers findet Ihr unter
+[https://time-taker.blaulichtbande.de/](https://time-taker.blaulichtbande.de/)
+
+-   Benutzename: tb@baluclichtbande.de
+-   Passwort: 12345678
+
 Das Projekt TimeTaker besteht aus drei Komponenten
 
 -   API/Server

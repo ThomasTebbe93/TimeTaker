@@ -53,7 +53,6 @@ namespace API.BLL.UseCases.DutyHoursManagement.Services
             var serviceLogDescriptions =
                 descriptionDao.FindByIds(serviceLogDescriptionIds.ToHashSet()).ToDictionary(x => x.Id);
 
-
             var enrichedBookings = bookings.Select(x => new DutyHoursBooking(x)
             {
                 Creator = users.ValueOrDefault(x.CreatorIdent),
